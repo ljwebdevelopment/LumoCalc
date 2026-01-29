@@ -365,3 +365,129 @@ input:focus, select:focus{
     transition:none;
   }
 }
+/* ===== Home hero upgrade ===== */
+.hero--home{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  padding:26px;
+  margin-bottom:22px;
+}
+
+.hero__content{
+  position:relative;
+  z-index:2;
+  max-width:720px;
+}
+
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.02em;
+  color:var(--muted);
+  background: #fff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 10px;
+  margin:0 0 12px;
+}
+
+.accent{
+  color: var(--accent);
+}
+
+.hero__cta{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.trust{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.trust__item{
+  font-size:13px;
+  color:var(--muted);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 10px;
+}
+
+/* Background blobs + splotch photos */
+.hero__bg{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+
+.blob{
+  position:absolute;
+  filter: blur(18px);
+  opacity:0.55;
+  border-radius: 999px;
+}
+.blob--a{
+  width:340px; height:220px;
+  top:-70px; left:-80px;
+  background: rgba(37,99,235,0.22);
+}
+.blob--b{
+  width:420px; height:260px;
+  bottom:-120px; right:-120px;
+  background: rgba(37,99,235,0.18);
+}
+.blob--c{
+  width:260px; height:200px;
+  top:40px; right:140px;
+  background: rgba(128,191,55,0.16);
+}
+
+/* “Splotch bubble” image chips */
+.splotch{
+  position:absolute;
+  width:140px;
+  height:140px;
+  border-radius: 38% 62% 58% 42% / 44% 35% 65% 56%;
+  overflow:hidden;
+  border:1px solid rgba(15,23,42,0.08);
+  box-shadow: 0 14px 30px rgba(2,6,23,0.10);
+  background:#fff;
+  opacity:0.95;
+}
+
+.splotch img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.splotch--1{ top:18px; right:22px; transform: rotate(8deg); }
+.splotch--2{ top:150px; right:170px; transform: rotate(-10deg); width:120px; height:120px; }
+.splotch--3{ bottom:18px; right:34px; transform: rotate(12deg); width:110px; height:110px; }
+
+/* Make the hero text stand out over the art */
+.hero--home .h1{
+  margin:0 0 10px;
+}
+.hero--home .lede{
+  max-width:680px;
+}
+
+/* Mobile tuning */
+@media (max-width: 760px){
+  .hero--home{ padding:18px; }
+  .splotch{ display:none; } /* keep it clean on small screens */
+  .blob{ opacity:0.45; }
+}
