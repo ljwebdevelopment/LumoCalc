@@ -3,105 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LumoCalc — Free Online Calculators</title>
-  <meta name="description" content="Fast, free calculators: paycheck, rent affordability, debt snowball, overtime pay, loan payment, tip split, and more." />
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Net Worth Calculator | LumoCalc</title>
+  <meta name="description" content="Calculate your net worth by adding assets and liabilities. See totals and your net worth instantly." />
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="Home">
+      <a class="brand" href="../index.html" aria-label="Home">
         <span class="brand__mark" aria-hidden="true"></span>
-        <span>
-          <span class="brand__name">LumoCalc</span>
-          <span class="brand__tag">Fast, free calculators</span>
-        </span>
+        <span><span class="brand__name">LumoCalc</span></span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a class="pill" href="calculators/paycheck-calculator.html">Paycheck</a>
-        <a class="pill" href="calculators/rent-affordability.html">Rent</a>
-        <a class="pill" href="calculators/debt-snowball.html">Debt</a>
-        <a class="pill" href="calculators/overtime-pay.html">Overtime</a>
-        <a class="pill" href="calculators/loan-payment.html">Loan</a>
-        <a class="pill" href="calculators/credit-card-payoff.html">Credit Card</a>
-        <a class="pill" href="calculators/tip-split.html">Tip Split</a>
+        <a class="pill" href="paycheck-calculator.html">Paycheck</a>
+        <a class="pill" href="rent-affordability.html">Rent</a>
+        <a class="pill" href="debt-snowball.html">Debt</a>
+        <a class="pill" href="debt-to-income.html">DTI</a>
+        <a class="pill" href="401k-retirement.html">401k</a>
+        <a class="pill" href="net-worth.html">Net Worth</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <h1 class="h1">Simple calculators that work.</h1>
-      <p class="lede">No accounts, no clutter. Pick a calculator and get your answer instantly.</p>
+      <h1 class="h1">Net Worth Calculator</h1>
+      <p class="lede">Add your assets and liabilities to see your net worth instantly. Saved in your browser.</p>
     </section>
 
-    <section class="grid" aria-label="Calculator list">
-      <article class="card">
-        <h2>Paycheck Calculator</h2>
-        <p>Estimate gross pay per paycheck from hourly or salary (optional overtime).</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="calculators/paycheck-calculator.html">Open</a>
-        </div>
-      </article>
+    <section class="card">
+      <div class="row">
+        <button class="btn btn--primary" type="button" id="addAsset">Add Asset</button>
+        <button class="btn btn--primary" type="button" id="addLiability">Add Liability</button>
+        <button class="btn" type="button" id="reset">Reset</button>
+      </div>
 
-      <article class="card">
-        <h2>Rent Affordability Calculator</h2>
-        <p>Estimate a safe rent range from income, debt payments, and common rules.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="calculators/rent-affordability.html">Open</a>
-        </div>
-      </article>
+      <div id="err" class="error" role="alert" aria-live="polite"></div>
 
-      <article class="card">
-        <h2>Debt Snowball / Avalanche</h2>
-        <p>Plan payoff time and interest across multiple debts with a monthly budget.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="calculators/debt-snowball.html">Open</a>
+      <div class="grid" style="margin-top:14px;">
+        <div class="card" style="grid-column: span 6;">
+          <h2>Assets</h2>
+          <p class="small">Cash, checking/savings, home value, cars, investments, retirement, etc.</p>
+          <div id="assets"></div>
         </div>
-      </article>
 
-      <article class="card">
-        <h2>Overtime Pay Calculator</h2>
-        <p>Estimate weekly gross pay with overtime rules (time-and-a-half).</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="calculators/overtime-pay.html">Open</a>
+        <div class="card" style="grid-column: span 6;">
+          <h2>Liabilities</h2>
+          <p class="small">Mortgage, auto loans, student loans, credit cards, personal loans, etc.</p>
+          <div id="liabilities"></div>
         </div>
-      </article>
+      </div>
 
-      <article class="card">
-        <h2>Loan Payment Calculator</h2>
-        <p>Monthly payment from loan amount, APR, and term.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="calculators/loan-payment.html">Open</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h2>Credit Card Payoff Calculator</h2>
-        <p>Estimate payoff time and total interest based on your monthly payment.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="calculators/credit-card-payoff.html">Open</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h2>Tip Split Calculator</h2>
-        <p>Split a bill and tip between people with optional tax.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="calculators/tip-split.html">Open</a>
-        </div>
-      </article>
+      <div class="result" style="margin-top:14px;">
+        <strong id="net">Net worth: $0.00</strong>
+        <div class="small" id="totals"></div>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <div>© <span id="y"></span> LumoCalc • Built on GitHub Pages</div>
+      <a class="pill" href="../index.html">← Back to all calculators</a>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <script type="module" src="../js/calc-net-worth.js"></script>
 </body>
 </html>
