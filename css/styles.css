@@ -503,3 +503,104 @@ input:focus, select:focus{
   color:var(--muted);
   font-size:14px;
 }
+/* ===== Mobile polish (keep visuals) ===== */
+@media (max-width: 760px){
+
+  /* Hero spacing */
+  .hero--home{
+    padding:18px;
+    border-radius:16px;
+  }
+
+  /* Make the hero content breathe */
+  .hero__content{
+    max-width: 100%;
+  }
+
+  .kicker{
+    font-size:12px;
+    padding:6px 10px;
+  }
+
+  .hero--home .h1{
+    font-size: 30px;
+    line-height: 1.12;
+  }
+
+  .hero--home .lede{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Keep blobs subtle */
+  .blob{
+    filter: blur(20px);
+    opacity: 0.40;
+  }
+  .blob--a{ top:-90px; left:-120px; }
+  .blob--b{ bottom:-140px; right:-160px; }
+  .blob--c{ top:120px; right:-80px; }
+
+  /* KEEP splotches on mobile, but arrange them clean */
+  .splotch{
+    display:block;
+    position:static;
+    width:92px;
+    height:92px;
+    border-radius: 40% 60% 52% 48% / 44% 35% 65% 56%;
+    box-shadow: 0 10px 22px rgba(2,6,23,0.10);
+  }
+
+  /* Turn the background layer into a top “gallery strip” */
+  .hero__bg{
+    position:relative;
+    inset:auto;
+    pointer-events:none;
+    margin-bottom:14px;
+  }
+
+  /* Make the 3 splotches sit in a row and scroll if needed */
+  .hero__bg{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    overflow-x:auto;
+    padding-bottom:6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .hero__bg::-webkit-scrollbar{ display:none; }
+
+  /* Hide the blobs from taking layout space when we switch to flex */
+  .blob{
+    position:absolute;
+  }
+
+  /* Remove old absolute positioning */
+  .splotch--1, .splotch--2, .splotch--3{
+    transform:none;
+  }
+
+  /* Buttons full-width-ish */
+  .hero__cta .btn{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* Trust chips wrap nicely */
+  .trust{
+    gap:8px;
+  }
+  .trust__item{
+    font-size:12px;
+    padding:7px 10px;
+  }
+
+  /* Cards */
+  .card{
+    border-radius:14px;
+    padding:16px;
+  }
+
+  /* Grid already goes 1-column in your CSS — keep it */
+}
