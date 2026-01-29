@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scientific Calculator | LumoCalc</title>
+  <meta name="description" content="Scientific calculator with trig, logs, powers, roots, and parentheses." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" type="image/png" href="/assets/LumoCalc%20Favicon.png">
+</head>
+<body class="theme-green">
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <img src="../assets/LumoCalc%20logo%20(1).png" alt="LumoCalc logo" class="brand__logo">
+        <span class="brand__name">LumoCalc</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="pill" href="basic-calculator.html">Basic</a>
+        <a class="pill" href="scientific-calculator.html">Scientific</a>
+        <a class="pill" href="algebra-calculator.html">Algebra</a>
+
+        <a class="pill" href="paycheck-calculator.html">Paycheck</a>
+        <a class="pill" href="rent-affordability.html">Rent</a>
+        <a class="pill" href="debt-snowball.html">Debt</a>
+        <a class="pill" href="debt-to-income.html">DTI</a>
+        <a class="pill" href="401k-retirement.html">401k</a>
+        <a class="pill" href="net-worth.html">Net Worth</a>
+        <a class="pill" href="overtime-pay.html">Overtime</a>
+        <a class="pill" href="loan-payment.html">Loan</a>
+        <a class="pill" href="credit-card-payoff.html">Credit Card</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="h1">Scientific Calculator</h1>
+      <p class="lede">Type an expression or use buttons. Trig uses degrees.</p>
+    </section>
+
+    <section class="card" style="max-width:720px; margin:0 auto;">
+      <div class="field">
+        <label for="expr">Expression</label>
+        <input id="expr" placeholder="e.g., sin(30) + 2^3 + sqrt(16) + log(100)" />
+      </div>
+
+      <div class="row">
+        <button class="btn" type="button" data-ins="sin(">sin</button>
+        <button class="btn" type="button" data-ins="cos(">cos</button>
+        <button class="btn" type="button" data-ins="tan(">tan</button>
+        <button class="btn" type="button" data-ins="sqrt(">sqrt</button>
+      </div>
+
+      <div class="row">
+        <button class="btn" type="button" data-ins="ln(">ln</button>
+        <button class="btn" type="button" data-ins="log(">log</button>
+        <button class="btn" type="button" data-ins="pi">pi</button>
+        <button class="btn" type="button" data-ins="e">e</button>
+      </div>
+
+      <div class="row">
+        <button class="btn" type="button" data-ins="(">(</button>
+        <button class="btn" type="button" data-ins=")">)</button>
+        <button class="btn" type="button" data-ins="^">^</button>
+        <button class="btn" type="button" id="clear">Clear</button>
+      </div>
+
+      <div class="row">
+        <button class="btn btn--primary" type="button" id="calc">Calculate</button>
+      </div>
+
+      <div id="err" class="error" role="alert" aria-live="polite"></div>
+      <div class="result" id="out" hidden>
+        <strong id="ans">—</strong>
+        <div class="small">Supported: + − × ÷ ^ ( ) sin cos tan sqrt ln log, constants pi, e</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>
+        © <span id="y"></span> LumoCalc • Built by
+        <a href="https://ljwebdevelopment.com" target="_blank" rel="noopener">LJ Web Development</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script type="module" src="../js/calc-scientific.js"></script>
+</body>
+</html>
