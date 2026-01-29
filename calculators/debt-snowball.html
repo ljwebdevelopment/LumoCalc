@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Debt Snowball Calculator | LumoCalc</title>
+  <meta name="description" content="Plan debt payoff using snowball or avalanche method. Add multiple debts, set monthly budget, and estimate payoff time." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span><span class="brand__name">LumoCalc</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="pill" href="loan-payment.html">Loan</a>
+        <a class="pill" href="credit-card-payoff.html">Credit Card</a>
+        <a class="pill" href="paycheck-calculator.html">Paycheck</a>
+        <a class="pill" href="rent-affordability.html">Rent</a>
+        <a class="pill" href="debt-snowball.html">Debt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="h1">Debt Snowball / Avalanche</h1>
+      <p class="lede">Add your debts, choose a payoff strategy, and estimate payoff time + total interest.</p>
+    </section>
+
+    <section class="card">
+      <div class="form">
+        <div class="row">
+          <div class="field">
+            <label for="strategy">Strategy</label>
+            <select id="strategy">
+              <option value="snowball" selected>Snowball (smallest balance first)</option>
+              <option value="avalanche">Avalanche (highest APR first)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="budget">Total monthly payment budget (across all debts)</label>
+            <input id="budget" inputmode="decimal" placeholder="e.g., 800" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="minMode">Minimum payment rule</label>
+            <select id="minMode">
+              <option value="useEntered" selected>Use the minimum payments I enter</option>
+              <option value="percent">Set minimum as % of balance (with floor)</option>
+            </select>
+          </div>
+          <div class="field" id="minCfg" hidden>
+            <label>Min % and floor</label>
+            <div class="row">
+              <input id="minPct" inputmode="decimal" value="2" />
+              <input id="minFloor" inputmode="decimal" value="25" />
+            </div>
+            <div class="small">Example: 2% of balance, minimum $25.</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--primary" type="button" id="addDebt">Add Debt</button>
+          <button class="btn" type="button" id="calc">Calculate</button>
+        </div>
+
+        <div id="err" class="error" role="alert" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Your Debts</h2>
+      <div class="small">Enter balance and APR. Minimum payment is required unless you use the % rule.</div>
+      <div id="debts"></div>
+      <div class="small">Tip: You can refresh the page—your debts are saved in this browser.</div>
+    </section>
+
+    <section class="card" id="out" hidden>
+      <h2>Results</h2>
+      <div class="result">
+        <strong id="headline">—</strong>
+        <div class="small" id="summary1"></div>
+        <div class="small" id="summary2"></div>
+      </div>
+
+      <h2 style="margin-top:14px;">First 12 Months Preview</h2>
+      <div class="small">This is an estimate with monthly compounding. Real card interest can vary.</div>
+      <div id="tableWrap" class="result" style="overflow:auto; margin-top:10px;">
+        <table id="table" style="width:100%; border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(255,255,255,.10);">Month</th>
+              <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(255,255,255,.10);">Focus Debt</th>
+              <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(255,255,255,.10);">Total Paid</th>
+              <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(255,255,255,.10);">Interest</th>
+              <th style="text-align:left; padding:8px; border-bottom:1px solid rgba(255,255,255,.10);">Remaining</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <a class="pill" href="../index.html">← Back to all calculators</a>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/calc-debt-snowball.js"></script>
+</body>
+</html>
